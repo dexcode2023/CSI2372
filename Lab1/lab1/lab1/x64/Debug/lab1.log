@@ -1,3 +1,3 @@
-﻿  myfile3a.cpp
-C:\Users\dextr\Desktop\CSI2372\Codes_LAB1\CSI2372\Lab1\lab1\lab1\myfile3a.cpp(37,12): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+﻿  myfile3b.cpp
+C:\Users\dextr\Desktop\CSI2372\Codes_LAB1\CSI2372\Lab1\lab1\lab1\myfile3b.cpp(36,12): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   lab1.vcxproj -> C:\Users\dextr\Desktop\CSI2372\Codes_LAB1\CSI2372\Lab1\lab1\x64\Debug\lab1.exe

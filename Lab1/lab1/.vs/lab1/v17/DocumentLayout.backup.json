@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{234A2DB0-31E7-417D-8E2D-835F69C035A2}|lab1\\lab1.vcxproj|C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile3a.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{234A2DB0-31E7-417D-8E2D-835F69C035A2}|lab1\\lab1.vcxproj|solutionrelative:lab1\\myfile3a.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{234A2DB0-31E7-417D-8E2D-835F69C035A2}|lab1\\lab1.vcxproj|C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile3b.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{234A2DB0-31E7-417D-8E2D-835F69C035A2}|lab1\\lab1.vcxproj|solutionrelative:lab1\\myfile3b.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "myfile3a.cpp",
-              "DocumentMoniker": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile3a.cpp",
-              "RelativeDocumentMoniker": "lab1\\myfile3a.cpp",
-              "ToolTip": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile3a.cpp",
-              "RelativeToolTip": "lab1\\myfile3a.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
+              "Title": "myfile3b.cpp",
+              "DocumentMoniker": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile3b.cpp",
+              "RelativeDocumentMoniker": "lab1\\myfile3b.cpp",
+              "ToolTip": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile3b.cpp",
+              "RelativeToolTip": "lab1\\myfile3b.cpp",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-25T22:47:38.473Z",
+              "WhenOpened": "2024-09-25T23:53:04.917Z",
               "EditorCaption": ""
             }
           ]

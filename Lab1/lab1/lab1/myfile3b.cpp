@@ -32,6 +32,14 @@ void exchange(int& a, int& b) {
 void sort(vector<int>& T) {
 
 	//YOUR CODE
+	;
+	int count = T.size() - 1;
+	for (int i = 0; i < T.size() - 1; i++) {
+		int x = searchIndex(T, count);
+		exchange(T[count], T[x]);
+		count--;
+
+	}
 }
 
 /* arrayEntry function to enter values ​​from your table
