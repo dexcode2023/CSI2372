@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{234A2DB0-31E7-417D-8E2D-835F69C035A2}|lab1\\lab1.vcxproj|C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{234A2DB0-31E7-417D-8E2D-835F69C035A2}|lab1\\lab1.vcxproj|solutionrelative:lab1\\myfile1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{234A2DB0-31E7-417D-8E2D-835F69C035A2}|lab1\\lab1.vcxproj|C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{234A2DB0-31E7-417D-8E2D-835F69C035A2}|lab1\\lab1.vcxproj|solutionrelative:lab1\\myfile1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{234A2DB0-31E7-417D-8E2D-835F69C035A2}|lab1\\lab1.vcxproj|C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile3a.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{234A2DB0-31E7-417D-8E2D-835F69C035A2}|lab1\\lab1.vcxproj|solutionrelative:lab1\\myfile3a.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,27 +23,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "myfile1.cpp",
-              "DocumentMoniker": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile1.cpp",
-              "RelativeDocumentMoniker": "lab1\\myfile1.cpp",
-              "ToolTip": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile1.cpp",
-              "RelativeToolTip": "lab1\\myfile1.cpp",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAmwDQAAAABAAAAAAAAAA==",
+              "Title": "myfile3a.cpp",
+              "DocumentMoniker": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile3a.cpp",
+              "RelativeDocumentMoniker": "lab1\\myfile3a.cpp",
+              "ToolTip": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile3a.cpp",
+              "RelativeToolTip": "lab1\\myfile3a.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-25T17:07:16.468Z",
+              "WhenOpened": "2024-09-25T22:47:38.473Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "myfile1.h",
-              "DocumentMoniker": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile1.h",
-              "RelativeDocumentMoniker": "lab1\\myfile1.h",
-              "ToolTip": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile1.h",
-              "RelativeToolTip": "lab1\\myfile1.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-25T17:14:56.445Z"
             }
           ]
         }

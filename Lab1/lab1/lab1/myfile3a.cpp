@@ -33,6 +33,17 @@ void exchange(int& a, int& b) {
 */
 vector<int> sort(vector<int> T) {
 	//YOUR CODE
+	vector<int> result = T;
+	int count = result.size() -1;
+	for (int i = 0; i < T.size() - 1; i++) {
+		int x = searchIndex(result, count);
+		exchange(result[count], result[x]);
+		count--;
+		
+	}
+	return result;
+
+
 }
 
 
