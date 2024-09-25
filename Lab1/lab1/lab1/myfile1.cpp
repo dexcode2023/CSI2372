@@ -9,17 +9,36 @@ int main()
 	std::cout << "Size in bytes of a double: " << sizeof(double) << std::endl;
 	std::cout << "Size in bytes of a short Integer: " << sizeof(short) << std::endl;
 	std::cout << "Size in bytes of a unsigned Integer: " << sizeof(unsigned) << std::endl;
+	std::cout << std::endl;
 
 	//declaring
 	int holder;
+	float holderf;
 	std::cout << "Enter an Integer: ";
 	std::cin >> holder;
+	std::cout << std::endl;
 
 	//method 1
 	std::cout << "number in decimal " << std::dec << holder << std::endl;
 	std::cout << "number in octal " << std::oct << holder << std::endl;
 	std::cout << "number in hexa " << std::hex << holder << std::endl;
+	std::cout << std::endl;
 	//method 2
+	std::cout << std::dec;
+	std::cout << "number in decimal ";
+	std::cout << holder << std::endl;
+	std::cout << "Number in octal: ";
+	std::cout << std::oct << holder << std::endl;                
+	std::cout << "Number in hex: ";
+	std::cout << std::hex << holder << std::endl;    
+	std::cout << std::endl;
+
+	//with and without power of 10 float input
+	std::cout << "Enter a real number: ";
+	std::cin >> holderf;
+	std::cout << std::fixed << std::setprecision(3) <<  holderf << std::endl;
+	std::cout << std::hexfloat << holderf << std::endl;
+	std::cout << std::endl;
 
 	
 	return 0;
