@@ -21,17 +21,8 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "myfile1.h",
-              "DocumentMoniker": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile1.h",
-              "RelativeDocumentMoniker": "lab1\\myfile1.h",
-              "ToolTip": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile1.h",
-              "RelativeToolTip": "lab1\\myfile1.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-25T17:14:56.445Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
@@ -41,10 +32,22 @@
               "RelativeDocumentMoniker": "lab1\\myfile1.cpp",
               "ToolTip": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile1.cpp",
               "RelativeToolTip": "lab1\\myfile1.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAmwDQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-09-25T17:07:16.468Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "myfile1.h",
+              "DocumentMoniker": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile1.h",
+              "RelativeDocumentMoniker": "lab1\\myfile1.h",
+              "ToolTip": "C:\\Users\\dextr\\Desktop\\CSI2372\\Codes_LAB1\\CSI2372\\Lab1\\lab1\\lab1\\myfile1.h",
+              "RelativeToolTip": "lab1\\myfile1.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-25T17:14:56.445Z"
             }
           ]
         }

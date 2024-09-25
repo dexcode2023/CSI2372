@@ -14,6 +14,7 @@ int main()
 	//declaring
 	int holder;
 	float holderf;
+	char holderc;
 	std::cout << "Enter an Integer: ";
 	std::cin >> holder;
 	std::cout << std::endl;
@@ -39,6 +40,13 @@ int main()
 	std::cout << std::fixed << std::setprecision(3) <<  holderf << std::endl;
 	std::cout << std::hexfloat << holderf << std::endl;
 	std::cout << std::endl;
+
+	//char entry and value display
+	std::cout << "Enter a character: ";
+	std::cin >> holderc;
+	std::cout << holderc << std :: endl;
+	std::cout << static_cast<int>(holderc) << std::endl;
+
 
 	
 	return 0;
