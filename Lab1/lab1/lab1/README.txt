@@ -1,5 +1,5 @@
 Student Names: Anna Brimacombe-Tanner, Dexter Day 
-Student Numbers: 300245481, ??
+Student Numbers: 300245481, 30192263
 Course Code: CSI2372A
 
 This lab 1 contains the files: 
