@@ -21,4 +21,24 @@ int main() {
 void sort(int a[], int size)
 {
 	//YOUR CODE HERE
+	for(int i = 0; i< size; i++){
+		//min value index
+		int min = i;
+		//iterate through array to find min index
+		for(int j= i + 1; j<size; j++){
+			if(a[j] < a[min]){
+				min = j;
+
+			}
+		}
+		//swap min index and first 
+		int temp = a[i];
+		a[i] = a[min];
+		a[min] = temp;
+
+
+
+
+
+	}
 }
