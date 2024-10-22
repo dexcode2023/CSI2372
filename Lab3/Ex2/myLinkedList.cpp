@@ -4,11 +4,16 @@
 
 int main()
 {
-	Evaluation* first = nullptr;
+	
 	int choice;
 	int number = 0;
-	cout << "Enter the first student into the list" << endl;
-	first = add(first,number);
+	cout << "Lets add the first student into the list!" << endl;
+	Evaluation* first = new Evaluation;
+	cout<< "Enter the student: ";
+	cin>> first->student;
+	cout<< "Enter the grade: ";
+	cin>> first->grade;
+	
 	
 	
 	do
