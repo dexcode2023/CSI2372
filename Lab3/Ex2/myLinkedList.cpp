@@ -40,7 +40,7 @@ int main()
 
 
 
-/*
+/*s
 *add() Function*
 **/
 Evaluation* add(Evaluation* p, int& number)
@@ -68,7 +68,7 @@ void display(Evaluation* p)
 {
 	//YOUR CODE COMES HERE
 	if(p == nullptr) {
-        cout << "The list is empty." << endl;
+        cout << "List is empty" << endl;
         return;
     }
 
@@ -88,6 +88,23 @@ void display(Evaluation* p)
 int average(Evaluation* p, int const& nbre)
 {
 	//YOUR CODE COMES HERE
+	if(p == nullptr){
+		cout << "Empty List" <<endl;
+		return 0;
+	}
+	Evaluation* current = p;
+	double sum = 0;
+	
+	while (current != nullptr){
+		sum += current->grade;
+		current = current->next;
+	}
+	cout << "The average of the class is: " << sum / nbre <<endl;
+
+
+
+
+	return 1;
 }
 
 
