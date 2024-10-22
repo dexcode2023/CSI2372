@@ -4,6 +4,11 @@
 
 int main()
 {
+	Evaluation* first = nullptr;
+	int choice;
+	int number = 0;
+	
+	
 	
 	do
 	{
@@ -41,6 +46,7 @@ int main()
 Evaluation* add(Evaluation* p, int& number)
 {
 	//YOUR CODE COMES HERE
+	
 }
 
 
@@ -61,6 +67,17 @@ Evaluation* remove(Evaluation* p, int& number)
 void display(Evaluation* p)
 {
 	//YOUR CODE COMES HERE
+	if(p == nullptr) {
+        cout << "The list is empty." << endl;
+        return;
+    }
+
+    Evaluation* current = p;
+    while (current != nullptr) {
+        cout << "Student: " << current->student << endl;
+        cout << "The grade is: " << current->grade << endl;
+        current = current->next;
+    }
 }
 
 
