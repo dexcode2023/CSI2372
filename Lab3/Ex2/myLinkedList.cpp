@@ -7,7 +7,8 @@ int main()
 	Evaluation* first = nullptr;
 	int choice;
 	int number = 0;
-	
+	cout << "Enter the first student into the list" << endl;
+	first = add(first,number);
 	
 	
 	do
@@ -46,6 +47,35 @@ int main()
 Evaluation* add(Evaluation* p, int& number)
 {
 	//YOUR CODE COMES HERE
+	int hold;
+    cout << "After which element you want to insert? (0 for start): ";
+    cin >> hold;
+
+	if(hold <0 || hold > number){
+		cout<< "Invalid position" <<endl;
+		return p;
+	}
+	Evaluation* added = new Evaluation;
+	cout<< "Enter the student: ";
+	cin>> added->student;
+	cout<< "Enter the grade: ";
+	cin>> added->grade;
+	added->next = nullptr;
+
+	if(hold ==0){
+		added ->next = p;
+		p = added;
+	} else{
+		Evaluation* current = p;
+		for(int i = 1; i< hold;i++){
+			current = current->next;
+		}
+		added->next = current->next;
+		current->next = added;
+	}
+	number++;
+	return p;
+
 	
 }
 
@@ -57,6 +87,33 @@ Evaluation* add(Evaluation* p, int& number)
 Evaluation* remove(Evaluation* p, int& number)
 {
 	//YOUR CODE COMES HERE
+	int hold;
+    cout << "What is the number of the elemenet to delete?: ";
+    cin >> hold;
+
+	if(hold <0 || hold > number){
+		cout<< "Invalid position" <<endl;
+		return p;
+	}
+	Evaluation* removed = new Evaluation;
+
+	if(hold ==1){
+		p = p->next;
+		delete removed;
+	}
+	else{
+		Evaluation* current = p;
+		for(int i = 1; i< hold-1;i++){
+			current = current->next;
+		}
+		removed = current->next;
+		current->next = removed->next;
+		delete removed;
+	}
+
+
+	number--;
+	return p;
 }
 
 
