@@ -19,20 +19,35 @@ SetInt::~SetInt(){
 
 SetInt::SetInt(const SetInt& t){
     size = t.size;
+    if(t.elem == nullptr){
+        elem = nullptr;
+        return;
+    }
     elem = new int[size];
     for(int i = 0; i< size; i++){
         elem[i] = t.elem[i];
     }
 }
 
-void SetInt::add(int t){
+bool SetInt::contains(int t){
+    if(elem == nullptr){
+        return false;
+    }
     for(int i = 0; i<size; i++){
         if(t ==*(elem + i)){
-            cout<< "The element that you attempted to add already exists inside the set." <<endl;
-            return;
+            cout << "The element already exists in the set." << endl;
+            return true;;
 
         }
     }
+    return false;
+}
+
+void SetInt::add(int t){
+    if(contains(t)){
+        return;
+    }
+    
     int* res = new int[size++];
     for(int i = 0; i < size-1; i++){
         res[i] = elem[i];
@@ -41,6 +56,21 @@ void SetInt::add(int t){
     delete[] elem;
     elem = res;
 }
+
+void SetInt::remove(int t){
+    
+}
+
+
+
+bool SetInt::containsIn(int t, int& el){
+    if(elem[el] == t){
+        return true;
+    }
+    return false;
+}
+
+
 
 int main() {
     SetInt a; 	// object creation
