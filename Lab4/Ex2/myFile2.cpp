@@ -48,28 +48,58 @@ void SetInt::add(int t){
         return;
     }
     
-    int* res = new int[size++];
-    for(int i = 0; i < size-1; i++){
+    int* res = new int[size + 1];
+    for(int i = 0; i < size; i++){
         res[i] = elem[i];
     }
-    res[size-1] = t;
-    delete[] elem;
+    res[size] = t;
+    if(elem != nullptr){
+        delete[] elem;
+    }
+    
     elem = res;
+    size++;
 }
 
 void SetInt::remove(int t){
     if(!contains(t)){
+        cout << "The element does not already exist in the set." << endl;
         return;
     }
+    int* res = new int[size-1];
+    int respos = 0;
+    for( int i = 0; i< size; i++){
+        if(elem[i] != t){
+            res[respos] = elem[i];
+            respos++;
+
+        }
+    }
+    delete[] elem;
+    elem = res;
+    size--;
+
+    if(size == 0){
+        elem = nullptr;
+    }
 }
-
-
 
 bool SetInt::containsIn(int t, int& el){
     if(elem[el] == t){
         return true;
     }
     return false;
+}
+
+int SetInt::nbElem(){
+    return size;
+}
+
+int* SetInt::tabElem(){
+    if(elem == nullptr){
+        return NULL;
+    }
+    return elem;
 }
 
 
