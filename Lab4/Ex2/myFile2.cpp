@@ -35,7 +35,6 @@ bool SetInt::contains(int t){
     }
     for(int i = 0; i<size; i++){
         if(t ==*(elem + i)){
-            cout << "The element already exists in the set." << endl;
             return true;;
 
         }
@@ -45,6 +44,7 @@ bool SetInt::contains(int t){
 
 void SetInt::add(int t){
     if(contains(t)){
+        cout << "The element already exists in the set." << endl;
         return;
     }
     
@@ -58,7 +58,9 @@ void SetInt::add(int t){
 }
 
 void SetInt::remove(int t){
-    
+    if(!contains(t)){
+        return;
+    }
 }
 
 
