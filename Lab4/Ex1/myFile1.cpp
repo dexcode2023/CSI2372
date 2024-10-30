@@ -23,5 +23,6 @@ int main() {
     delete Yan;
     delete Jane;
     cout << "Enter a number to exit..." << endl;
+    cin >> exitNum; // Wait for user input
     return 0;
 }
