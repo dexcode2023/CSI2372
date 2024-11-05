@@ -1,3 +1,7 @@
+#include <cstdlib>
+#include <ctime>
+
+
 class CardsSet {
 public:
     CardsSet() : number(0) {}
@@ -12,3 +16,23 @@ private:
     Card set[52];
     int number;
 };
+
+void CardsSet::novSet(){
+
+}
+
+void CardsSet::shuffle(){
+
+}
+
+Card CardsSet::take(){
+
+}
+
+void CardsSet::put(Card k){
+
+}
+
+Card CardsSet::lookIn(int no){
+
+}
