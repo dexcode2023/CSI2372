@@ -1,9 +1,14 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
 #include "myFile.h"
 #include "Card.h"
-#include "Player.h"
 #include "CardsSet.h"
+#include "Player.h"
 
+// Implementing the write() method for the Card class
 void Card::write() {
     std::string colorName;
     switch (color) {
@@ -26,10 +31,62 @@ void Card::write() {
     std::cout << std::endl;
 }
 
-void Player::play() {
+// Implementing the novSet() method for the CardsSet class
+void CardsSet::novSet() {
+    int x = 0;
+    for (int i = 1; i < 14; ++i) {
+        set[x++] = Card(club, i);
+        set[x++] = Card(diamond, i);
+        set[x++] = Card(heart, i);
+        set[x++] = Card(spade, i);
+    }
+}
+
+// Implementing the shuffle() method for the CardsSet class
+void CardsSet::shuffle() {
+    if (number == 0 || number == 1) {
+        cout << "No cards to shuffle." << endl;
+        return;
+    }
+    srand(static_cast<unsigned int>(time(0)));
+    for (int i = 0; i < number; i++) {
+        int j = rand() % number;
+        swap(set[i], set[j]);
+    }
+}
+
+// Implementing the take() method for the CardsSet class
+Card CardsSet::take() {
+    if (number == 0) {
+        throw std::out_of_range("Empty card set. Cannot take.");
+    }
+    Card res = set[number - 1];
+    number--;
+    return res;
+}
+
+// Implementing the put() method for the CardsSet class
+void CardsSet::put(Card k) {
+    if (number == 52) {
+        cout << "Deck is full cannot add card." << endl;
+        return;
+    }
+    set[number] = k;
+    number++;
+}
+
+// Implementing the lookIn() method for the CardsSet class
+Card CardsSet::lookIn(int no) {
+    if (number - no < 0) {
+        throw std::out_of_range("Cannot access card out of set bounds.");
+    }
+    return set[number - no];
+}
+
+// Implementing the play() method for the Player class
+int Player::play() {
     bool wantsMore = true;
     int totalPoints = 0;
-    cout << "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★" <<;
     std::cout << "Starting your turn..." << std::endl;
 
     while (wantsMore && totalPoints <= 21) {
@@ -44,15 +101,20 @@ void Player::play() {
             std::cout << "You exceeded 21 points!" << std::endl;
             break;
         }
+
         char response;
         std::cout << "Do you want an additional card? (y/n): ";
         std::cin >> response;
         wantsMore = (response == 'y');
     }
+    return totalPoints; 
 }
+
+// Implementing the countPoints() method for the Player class (private)
 int Player::countPoints() {
     int points = 0;
     bool hasAce = false;
+
     for (const Card& card : hand) {
         if (card.getValue() == 1) {
             hasAce = true;
@@ -63,11 +125,11 @@ int Player::countPoints() {
             points += card.getValue();
         }
     }
+
+    
     if (points > 21 && hasAce) {
         points -= 13; 
     }
+
     return points;
 }
-
-
-
