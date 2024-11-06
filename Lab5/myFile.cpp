@@ -8,10 +8,50 @@ using namespace std;
 #include "CardsSet.h"
 #include "Player.h"
 
+int main() {
+	CardsSet packet;
+	Player you(packet, false);
+	Player me(packet, true);
+	char answer[3];
+	bool continuous = true;
+	cout << "Hello! " << endl;
+	while (continuous)
+	{
+		cout << "A new game? " << endl;
+		cin >> answer;
+		continuous = answer[0] == 'y';
+		if (continuous)
+		{
+			packet.novSet();
+			packet.shuffle();
+			packet.take();
+			int p1 = you.play();
+			if (p1 > 21) {
+				cout << "You lost! " << endl;
+			}
+			else if (p1 == 21) {
+				cout << "You won! " << endl;
+			}
+			else // the computer must play
+			{
+				int p2 = me.play();
+				if (p2 <= 21 && p2 >= p1) {
+					cout << "You lost! " << endl;
+				}
+				else {
+					cout << "You won! " << endl;
+				}
+			}
+		}
+	}
+	return 0;
+}
+
+
 // Implementing the write() method for the Card class
 void Card::write() {
     std::string colorName;
-    switch (color) {
+    switch (col) {
         case club: colorName = "Club"; break;
         case diamond: colorName = "Diamond"; break;
         case heart: colorName = "Heart"; break;
@@ -19,13 +59,16 @@ void Card::write() {
     }
 
     std::cout << colorName << " ";
-    if (value >= 1 && value <= 10) {
-        std::cout << value;
-    } else if (value == 11) {
+    if (value() > 1 && value() <= 10) {
+        std::cout << static_cast<char>(value());
+    } else if(value() == 1){
+		std::cout << "Ace";
+	}
+	 else if (value() == 11) {
         std::cout << "Jack";
-    } else if (value == 12) {
+    } else if (value() == 12) {
         std::cout << "Queen";
-    } else if (value == 13) {
+    } else if (value() == 13) {
         std::cout << "King";
     }
     std::cout << std::endl;
@@ -40,10 +83,12 @@ void CardsSet::novSet() {
         set[x++] = Card(heart, i);
         set[x++] = Card(spade, i);
     }
+	number = 52;
 }
 
 // Implementing the shuffle() method for the CardsSet class
 void CardsSet::shuffle() {
+	std::cout << "Deck initialized. Number of cards: " << number << std::endl;
     if (number == 0 || number == 1) {
         cout << "No cards to shuffle." << endl;
         return;
@@ -57,6 +102,7 @@ void CardsSet::shuffle() {
 
 // Implementing the take() method for the CardsSet class
 Card CardsSet::take() {
+	std::cout << "Deck initialized. Number of cards: " << number << std::endl;
     if (number == 0) {
         throw std::out_of_range("Empty card set. Cannot take.");
     }
@@ -91,14 +137,13 @@ int Player::play() {
 
     while (wantsMore && totalPoints <= 21) {
         Card drawnCard = packet.take();
-        hand.push_back(drawnCard);
+        inHand.put(drawnCard);
         drawnCard.write();
 
         totalPoints = countPoints();
 
-        std::cout << "Current total points: " << totalPoints << std::endl;
+        std::cout << "Your score is " << totalPoints <<" points"<< std::endl;
         if (totalPoints > 21) {
-            std::cout << "You exceeded 21 points!" << std::endl;
             break;
         }
 
@@ -114,15 +159,17 @@ int Player::play() {
 int Player::countPoints() {
     int points = 0;
     bool hasAce = false;
+	int cardnum = inHand.numCards();
 
-    for (const Card& card : hand) {
-        if (card.getValue() == 1) {
+    for (int i = 0; i <cardnum; i++) {
+		Card card = inHand.lookIn(i+1);
+        if (card.value() == 1) {
             hasAce = true;
             points += 14; 
-        } else if (card.getValue() >= 11 && card.getValue() <= 13) {
+        } else if (card.value() >= 11 && card.value() <= 13) {
             points += 10; 
         } else {
-            points += card.getValue();
+            points += card.value();
         }
     }
 
