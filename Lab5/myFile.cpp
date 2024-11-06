@@ -52,26 +52,27 @@ int main() {
 void Card::write() {
     std::string colorName;
     switch (col) {
-        case club: colorName = "Club"; break;
-        case diamond: colorName = "Diamond"; break;
-        case heart: colorName = "Heart"; break;
-        case spade: colorName = "Spade"; break;
+        case club: colorName = "Clubs"; break;
+        case diamond: colorName = "Diamonds"; break;
+        case heart: colorName = "Hearts"; break;
+        case spade: colorName = "Spades"; break;
     }
 
-    std::cout << colorName << " ";
+    
     if (value() > 1 && value() <= 10) {
-        std::cout << static_cast<char>(value());
+        cout << value();
     } else if(value() == 1){
-		std::cout << "Ace";
+		cout << "Ace";
 	}
 	 else if (value() == 11) {
-        std::cout << "Jack";
+        cout << "Jack";
     } else if (value() == 12) {
-        std::cout << "Queen";
+        cout << "Queen";
     } else if (value() == 13) {
-        std::cout << "King";
+        cout << "King";
     }
-    std::cout << std::endl;
+    cout <<" of "<< colorName;
+    cout << endl;
 }
 
 // Implementing the novSet() method for the CardsSet class
@@ -88,7 +89,7 @@ void CardsSet::novSet() {
 
 // Implementing the shuffle() method for the CardsSet class
 void CardsSet::shuffle() {
-	std::cout << "Deck initialized. Number of cards: " << number << std::endl;
+	
     if (number == 0 || number == 1) {
         cout << "No cards to shuffle." << endl;
         return;
@@ -102,7 +103,7 @@ void CardsSet::shuffle() {
 
 // Implementing the take() method for the CardsSet class
 Card CardsSet::take() {
-	std::cout << "Deck initialized. Number of cards: " << number << std::endl;
+	
     if (number == 0) {
         throw std::out_of_range("Empty card set. Cannot take.");
     }
@@ -133,25 +134,46 @@ Card CardsSet::lookIn(int no) {
 int Player::play() {
     bool wantsMore = true;
     int totalPoints = 0;
-    std::cout << "Starting your turn..." << std::endl;
+    if(!computer){
+        cout << "Your turn" << std::endl;
 
-    while (wantsMore && totalPoints <= 21) {
-        Card drawnCard = packet.take();
-        inHand.put(drawnCard);
-        drawnCard.write();
+        while (wantsMore && totalPoints <= 21) {
+            Card drawnCard = packet.take();
+            inHand.put(drawnCard);
+            cout<< "You get Card: ";
+            drawnCard.write();
+            cout<<endl;
 
-        totalPoints = countPoints();
+            totalPoints = countPoints();
 
-        std::cout << "Your score is " << totalPoints <<" points"<< std::endl;
-        if (totalPoints > 21) {
-            break;
+            cout << "Your score is " << totalPoints <<" points"<<endl;
+            if (totalPoints > 21 || totalPoints == 21) {
+                break;
+            }
+
+            char response;
+            cout << "Any additional Card ? ";
+            cin >> response;
+            wantsMore = (response == 'y');
         }
+    } else{
+        cout << "Computers turn" << std::endl;
+        while (totalPoints < 17) {
+            Card drawnCard = packet.take();
+            inHand.put(drawnCard);
+            cout << "Computer gets Card: ";
+            drawnCard.write();
+            cout << endl;
 
-        char response;
-        std::cout << "Do you want an additional card? (y/n): ";
-        std::cin >> response;
-        wantsMore = (response == 'y');
+            totalPoints = countPoints();
+            cout << "Computer's score is " << totalPoints << " points" << endl;
+
+            if (totalPoints >= 21) {
+                break;
+            }
+        }
     }
+    inHand = CardsSet();
     return totalPoints; 
 }
 
@@ -165,9 +187,7 @@ int Player::countPoints() {
 		Card card = inHand.lookIn(i+1);
         if (card.value() == 1) {
             hasAce = true;
-            points += 14; 
-        } else if (card.value() >= 11 && card.value() <= 13) {
-            points += 10; 
+            points += 14;  
         } else {
             points += card.value();
         }
