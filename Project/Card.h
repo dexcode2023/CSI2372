@@ -4,10 +4,12 @@
 #include <iostream>
 #include <string>
 
+
+//abstract class Card.
 class Card{
     public:
 
-    virtual ~Card() = default;
+    virtual ~Card(){};
 
     virtual int getCardsPerCoin(int coins) const = 0;
 
@@ -20,6 +22,9 @@ class Card{
         return os;
     }
 };
+
+//Below  are all concrete class implementations of card for all different bean types.
+//Each class implements a concrete version of GetName and print.
 
 class Blue : public Card {
 public:
@@ -148,9 +153,10 @@ class garden: public Card {
 public:
     int getCardsPerCoin(int coins) const override {
         switch (coins) {
-        
+            case 1: return 100;
             case 2: return 2;
             case 3: return 3;
+            case 4: return 100;
 
             default: return 0;
         }
