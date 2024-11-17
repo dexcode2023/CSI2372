@@ -34,20 +34,19 @@ class Chain{
 
         int sell() const;
 
-        void print(std::ostream& os);
-
         friend std::ostream& operator<<(std::ostream& os, const Chain& chain) {
-            chain.print(os);
+            os << cards[0]->getName() <<"/t";
+            for(const auto&  card : cards){
+                os << *card << " " << endl;
+            }
             return os;
         }
 
     private:
         std::vector<T*> cards;
-
-
-
 };
 
+//sell member function(was just testing to see how I could declare it outside)
 template<typename T>
 int Chain<T>::sell() const{
     if(cards.empty()){
@@ -68,10 +67,6 @@ int Chain<T>::sell() const{
     }
 }
 
-template<typename T>
-void Chain<T>::print(std::ostream& os){
-    
-}
 
 
 
