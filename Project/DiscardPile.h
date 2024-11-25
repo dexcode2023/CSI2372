@@ -10,6 +10,8 @@ class DiscardPile{
         std::vector<Card*> pile;
     public:
 
+        
+
         DiscardPile& operator +=(Card* card){
             pile.push_back(card);
             return *this;
@@ -27,8 +29,34 @@ class DiscardPile{
         }
 
         Card* top() const{
-            
+            if(pile.empty()){
+                return nullptr;
+            } else{
+                return pile.back();
+            }
+
         }
+        void print(std::ostream& os) const {
+            for (const auto& card : pile) {
+                card->print(os);
+                os << " ";
+            }
+        }   
+
+        friend std::ostream& operator<<(std::ostream& os, const DiscardPile& dp) {
+            if(!dp.pile.empty()){
+                dp.pile.back()->print(os);
+
+
+            }
+            else{
+                os<<"Pile Empty";
+
+
+            }
+            return os;
+        
+    }
         
 
 
