@@ -17,6 +17,9 @@ class IllegalType : public std::exception {
 template<typename T>
 class Chain{
 
+    private:
+        std::vector<T*> cards;
+
     public:
         Chain(){};
 
@@ -42,8 +45,11 @@ class Chain{
             return os;
         }
 
-    private:
-        std::vector<T*> cards;
+        bool empty(){
+            return(cards.empty());
+        }
+
+    
 };
 
 //sell member function(was just testing to see how I could declare it outside)
