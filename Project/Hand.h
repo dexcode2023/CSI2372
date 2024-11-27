@@ -57,6 +57,10 @@ class Hand{
             return os;
         }
 
+        bool empty() const{
+            return hand.empty();
+        }
+
 
 
 

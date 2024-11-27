@@ -20,6 +20,7 @@ class Chain{
     private:
         std::vector<T*> cards;
 
+
     public:
         Chain(){};
 
@@ -45,9 +46,43 @@ class Chain{
             return os;
         }
 
-        bool empty(){
+        bool empty() const{
             return(cards.empty());
         }
+
+        void playCard(std::ostream& os) {
+        if (hand.empty()) {
+            os << name << " has no cards to play.\n";
+            return;
+        }
+
+        Card* cardToPlay = hand.play(); // Get the top card
+        os << name << " plays " << *cardToPlay << "\n";
+
+        // Check if the card can be added to an existing chain
+        for (auto& chain : chains) {
+            try {
+                *chain += cardToPlay; // Try adding the card to the chain
+                os << "Added " << *cardToPlay << " to an existing chain.\n";
+                return;
+            } catch (IllegalType&) {
+                continue; // Skip chains that don't match
+            }
+        }
+
+        // If no matching chain exists and we can create a new chain
+        if (chains.size() < maxchains) {
+            Chain<Card>* newChain = new Chain<Card>();
+            *newChain += cardToPlay; // Add the card to the new chain
+            chains.push_back(newChain);
+            os << "Started a new chain with " << *cardToPlay << ".\n";
+            return;
+        }
+
+        // If no matching chain exists and max chains reached, tie and sell an existing chain
+        os << "No matching chain and maximum chains reached. Selling a chain...\n";
+        sellAndReplaceChain(cardToPlay, os);
+    }
 
     
 };

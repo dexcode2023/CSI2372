@@ -21,11 +21,29 @@ class Player{
 
         Hand hand;
 
+
+        void sellAndReplaceChain(Card* newCard, std::ostream& os) {
+            // Sell the first chain
+            int maxProfitIndex = 0;
+            int maxCoins = chains[0]->sell();
+            for (size_t i = 1; i < chains.size(); ++i) {
+                const auto currentChainProfit = chains[i]->sell();
+                if (currentChainProfit > maxCoins) {
+                    maxProfitIndex = i;
+                }
+            }
+
+            // Give coins to the player and replace the chain
+            os << "Sold chain for " << maxCoins << " coins.\n";
+            *this += maxCoins; // Add coins to the player
+            delete chains[maxProfitIndex]; // Delete the old chain
+            chains[maxProfitIndex] = new Chain<Card>(); // Replace it with a new chain
+            *chains[maxProfitIndex] += newCard; // Add the new card to the chain
+        }
+
     public:
 
         Player(std::string& playerName): name(playerName), coins(0), maxchains(2){
-            chains.push_back(new Chain<Card>());
-            chains.push_back(new Chain<Card>());
 
         }
         ~Player() {
@@ -42,7 +60,7 @@ class Player{
             return coins;
         }
 
-        int getNumChains() const{
+        int getMaxNumChains() const{
             return maxchains;
         }
 
@@ -68,6 +86,10 @@ class Player{
                 throw std::out_of_range("Invalid chain index");
             }
             return *chains[i];
+        }
+
+        void addCardToHand(Card* card) {
+            hand += card; 
         }
 
         void buyThirdChain() {
@@ -104,6 +126,44 @@ class Player{
 
 
             return os;
+        }
+
+
+
+        void playCard(std::ostream& os) {
+            if (hand.empty()) {
+                os << name << " has no cards to play.\n";
+                return;
+            }
+
+            // Get the top card
+
+            Card* cardToPlay = hand.play(); 
+            os << name << " plays " << *cardToPlay << "\n";
+
+            // Check if the card can be added to an existing chain
+            for (auto& chain : chains) {
+                try {
+                    *chain += cardToPlay; 
+                    os << "Added " << *cardToPlay << " to an existing chain.\n";
+                    return;
+                } catch (IllegalType&) {
+                    continue; 
+                }
+            }
+
+            // If no matching chain exists and we can create a new chain
+            if (chains.size() < maxchains) {
+                Chain<Card>* newChain = new Chain<Card>();
+                *newChain += cardToPlay; 
+                chains.push_back(newChain);
+                os << "Started a new chain with " << *cardToPlay << ".\n";
+                return;
+            }
+
+            // If no matching chain exists and max chains reached, tie and sell an existing chain
+            os << "No matching chain and maximum chains reached. Selling a chain...\n";
+            sellAndReplaceChain(cardToPlay, os);
         }
    
 

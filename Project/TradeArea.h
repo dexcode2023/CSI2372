@@ -57,6 +57,10 @@ class TradeArea{
             return os;
         }
 
+        const std::list<Card*>& getCards() const {
+            return tradespace;
+        }
+
 
 };
 

@@ -36,6 +36,18 @@ class Deck{
         return os;
     }
 
+    bool empty() const{
+        return cards.empty();
+    }
+
+    void addCard(Card* card) {
+        cards.push_back(card);
+    }
+
+    void shuffle() {
+        std::shuffle(cards.begin(), cards.end(), std::default_random_engine(std::random_device{}()));
+    }
+
 
 
 
