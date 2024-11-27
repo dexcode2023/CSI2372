@@ -57,6 +57,10 @@ class DiscardPile{
             return os;
         
     }
+
+    bool empty() const{
+        return pile.empty();
+    }
         
 
 

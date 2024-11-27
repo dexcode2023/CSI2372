@@ -11,7 +11,7 @@ class Hand{
     public:
 
         Hand& operator+=(Card* card){
-            hand.push_back(card);
+            hand.push_front(card);
             return *this;
         }
 

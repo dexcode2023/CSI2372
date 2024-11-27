@@ -13,76 +13,83 @@ class IllegalType : public std::exception {
          }
 };
 
+
+class Chain_Base {
+protected:
+    std::vector<Card*> cards;
+
+public:
+    virtual ~Chain_Base() {}
+
+    int size() const {
+        return cards.size();
+    }
+
+    bool empty() const {
+        return cards.empty();
+    }
+
+    // Print the cards in the chain
+    friend std::ostream& operator<<(std::ostream& os, const Chain_Base& chain) {
+        if (!chain.cards.empty()) {
+            for (const auto& card : chain.cards) {
+                os << *card << " "; // Print each card in the chain
+            }
+        } else {
+            os << "Empty Chain"; // If the chain is empty
+        }
+        return os;
+    }
+
+    
+};
+
 /// Chain class definition
 template<typename T>
-class Chain{
+class Chain : public Chain_Base{
 
     private:
-        std::vector<T*> cards;
+        std::string chainType;
+        
 
 
     public:
-        Chain(){};
+        Chain() {
+            if (typeid(T) == typeid(Blue)) {
+                chainType = "Blue";
+            } else if (typeid(T) == typeid(Chili)) {
+                chainType = "Chili";
+            } else if (typeid(T) == typeid(Stink)) {
+                chainType = "Stink";
+            } else if (typeid(T) == typeid(Green)) {
+                chainType = "Green";
+            } else if (typeid(T) == typeid(soy)) {
+                chainType = "Soy";
+            } else if (typeid(T) == typeid(black)) {
+                chainType = "Black";
+            } else if (typeid(T) == typeid(Red)) {
+                chainType = "Red";
+            } else if (typeid(T) == typeid(garden)) {
+                chainType = "Garden";
+            }
+        }
+
+        std::string getType() const{
+            return chainType;
+        }
 
         //check if card to be added is same type as other cards in this chain
         Chain& operator+=(Card* card){
-            if (T* typedCard = dynamic_cast<T*>(card)) {
-                cards.push_back(typedCard);
-
+            
+            if (typeid(T) == typeid(*card)) {
+                cards.push_back(card);
             } else {
-                throw IllegalType();
-
+                std::cout<< "Illegal card type added to chain." <<std::endl;
             }
             return *this;
         }
 
         int sell() const;
-
-        friend std::ostream& operator<<(std::ostream& os, const Chain& chain) {
-            os << cards[0]->getName() <<"/t";
-            for(const auto&  card : cards){
-                os << *card << " " << endl;
-            }
-            return os;
-        }
-
-        bool empty() const{
-            return(cards.empty());
-        }
-
-        void playCard(std::ostream& os) {
-        if (hand.empty()) {
-            os << name << " has no cards to play.\n";
-            return;
-        }
-
-        Card* cardToPlay = hand.play(); // Get the top card
-        os << name << " plays " << *cardToPlay << "\n";
-
-        // Check if the card can be added to an existing chain
-        for (auto& chain : chains) {
-            try {
-                *chain += cardToPlay; // Try adding the card to the chain
-                os << "Added " << *cardToPlay << " to an existing chain.\n";
-                return;
-            } catch (IllegalType&) {
-                continue; // Skip chains that don't match
-            }
-        }
-
-        // If no matching chain exists and we can create a new chain
-        if (chains.size() < maxchains) {
-            Chain<Card>* newChain = new Chain<Card>();
-            *newChain += cardToPlay; // Add the card to the new chain
-            chains.push_back(newChain);
-            os << "Started a new chain with " << *cardToPlay << ".\n";
-            return;
-        }
-
-        // If no matching chain exists and max chains reached, tie and sell an existing chain
-        os << "No matching chain and maximum chains reached. Selling a chain...\n";
-        sellAndReplaceChain(cardToPlay, os);
-    }
 
     
 };
@@ -94,13 +101,13 @@ int Chain<T>::sell() const{
         return 0;
     } else{
         int size = cards.size();
-        if(cards[0].getCardsPerCoin(4) =< size){
+        if(cards[0]->getCardsPerCoin(4) <= size){
             return 4;
-        } else if(cards[0].getCardsPerCoin(3) =< size){
+        } else if(cards[0]->getCardsPerCoin(3) <= size){
             return 3;
-        }  else if(cards[0].getCardsPerCoin(2) =< size){
+        }  else if(cards[0]->getCardsPerCoin(2) <= size){
             return 2;
-        } else if(cards[0].getCardsPerCoin(1) =< size){
+        } else if(cards[0]->getCardsPerCoin(1) <= size){
             return 1;
         } else{
             return 0;

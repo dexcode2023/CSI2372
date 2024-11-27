@@ -143,13 +143,20 @@ class Player{
 
             // Check if the card can be added to an existing chain
             for (auto& chain : chains) {
-                try {
-                    *chain += cardToPlay; 
-                    os << "Added " << *cardToPlay << " to an existing chain.\n";
-                    return;
-                } catch (IllegalType&) {
-                    continue; 
+
+                if(cardToPlay->getName() == chain->getType()){
+
+                } else{
+                    continue;
                 }
+                // try {
+                //     *chain += cardToPlay; 
+                //     os << "Added " << *cardToPlay << " to an existing chain.\n";
+                //     os<< chain <<"\n";
+                //     return;
+                // } catch (IllegalType&) {
+                //     continue; 
+                // }
             }
 
             // If no matching chain exists and we can create a new chain
@@ -165,7 +172,16 @@ class Player{
             os << "No matching chain and maximum chains reached. Selling a chain...\n";
             sellAndReplaceChain(cardToPlay, os);
         }
-   
+
+        Card* discardCard(int index) {
+        Card* discardedCard = hand[index]; 
+        if (discardedCard == nullptr) {
+            throw std::out_of_range("Invalid index for discard.");
+        }
+        std::cout<<coins<<std::endl;
+        return discardedCard;
+    }
+    
 
 
 };
