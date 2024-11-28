@@ -21,6 +21,29 @@ class Player{
 
         Hand hand;
 
+        Chain_Base* chainCreateType(Card* newCard){
+            Chain_Base* newChain = nullptr;
+            if (newCard->getName() == "Blue") {
+                    newChain = new Chain<Blue>();
+            } else if (newCard->getName() == "Chili") {
+                newChain = new Chain<Chili>();
+            } else if (newCard->getName() == "Stink") {
+                newChain = new Chain<Stink>();
+            } else if (newCard->getName() == "Green") {
+                newChain = new Chain<Green>();
+            } else if (newCard->getName() == "soy") {
+                newChain = new Chain<soy>();
+            } else if (newCard->getName() == "black") {
+                newChain = new Chain<black>();
+            } else if (newCard->getName() == "Red") {
+                newChain = new Chain<Red>();
+            } else if (newCard->getName() == "garden") {
+                newChain = new Chain<garden>();
+            }
+            return newChain;
+
+        }
+
 
         void sellAndReplaceChain(Card* newCard, std::ostream& os) {
             // Sell the first chain
@@ -38,24 +61,7 @@ class Player{
             os << "Sold chain for " << maxCoins << " coins.\n";
             *this += maxCoins; 
             delete chains[maxProfitIndex];
-            Chain_Base* newChain = nullptr;
-            if (newCard->getName() == "Blue") {
-                    newChain = new Chain<Blue>();
-                } else if (newCard->getName() == "Chili") {
-                    newChain = new Chain<Chili>();
-                } else if (newCard->getName() == "Stink") {
-                    newChain = new Chain<Stink>();
-                } else if (newCard->getName() == "Green") {
-                    newChain = new Chain<Green>();
-                } else if (newCard->getName() == "soy") {
-                    newChain = new Chain<soy>();
-                } else if (newCard->getName() == "black") {
-                    newChain = new Chain<black>();
-                } else if (newCard->getName() == "Red") {
-                    newChain = new Chain<Red>();
-                } else if (newCard->getName() == "garden") {
-                    newChain = new Chain<garden>();
-                }
+            Chain_Base* newChain = chainCreateType(newCard);
             chains[maxProfitIndex] = newChain; // Replace it with a new chain
             *chains[maxProfitIndex] += newCard; 
         }
@@ -176,28 +182,7 @@ class Player{
 
             // If no matching chain exists and we can create a new chain
             if (chains.size() < maxchains) {
-                Chain_Base* newChain = nullptr;
-
-                if (cardToPlay->getName() == "Blue") {
-                    newChain = new Chain<Blue>();
-                } else if (cardToPlay->getName() == "Chili") {
-                    newChain = new Chain<Chili>();
-                } else if (cardToPlay->getName() == "Stink") {
-                    newChain = new Chain<Stink>();
-                } else if (cardToPlay->getName() == "Green") {
-                    newChain = new Chain<Green>();
-                } else if (cardToPlay->getName() == "soy") {
-                    newChain = new Chain<soy>();
-                } else if (cardToPlay->getName() == "black") {
-                    newChain = new Chain<black>();
-                } else if (cardToPlay->getName() == "Red") {
-                    newChain = new Chain<Red>();
-                } else if (cardToPlay->getName() == "garden") {
-                    newChain = new Chain<garden>();
-                } else {
-                    os << "Unknown card type. Cannot create chain.\n";
-                    return;
-                }
+                Chain_Base* newChain = chainCreateType(cardToPlay);
 
                 *newChain += cardToPlay;
                 chains.push_back(newChain);
