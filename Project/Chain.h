@@ -17,9 +17,22 @@ class IllegalType : public std::exception {
 class Chain_Base {
 protected:
     std::vector<Card*> cards;
-
+    std::string chainType;
 public:
     virtual ~Chain_Base() {}
+
+    Chain_Base& operator+=(Card* card){
+
+            
+            cards.push_back(card);
+            return *this;
+        };
+
+    std::string getType() const{
+            return chainType;
+        }
+    
+    virtual int sell() const = 0;
 
     int size() const {
         return cards.size();
@@ -32,6 +45,7 @@ public:
     // Print the cards in the chain
     friend std::ostream& operator<<(std::ostream& os, const Chain_Base& chain) {
         if (!chain.cards.empty()) {
+            os<< chain.chainType << " ";
             for (const auto& card : chain.cards) {
                 os << *card << " "; // Print each card in the chain
             }
@@ -49,7 +63,7 @@ template<typename T>
 class Chain : public Chain_Base{
 
     private:
-        std::string chainType;
+        
         
 
 
@@ -64,18 +78,14 @@ class Chain : public Chain_Base{
             } else if (typeid(T) == typeid(Green)) {
                 chainType = "Green";
             } else if (typeid(T) == typeid(soy)) {
-                chainType = "Soy";
+                chainType = "soy";
             } else if (typeid(T) == typeid(black)) {
-                chainType = "Black";
+                chainType = "black";
             } else if (typeid(T) == typeid(Red)) {
                 chainType = "Red";
             } else if (typeid(T) == typeid(garden)) {
-                chainType = "Garden";
+                chainType = "garden";
             }
-        }
-
-        std::string getType() const{
-            return chainType;
         }
 
         //check if card to be added is same type as other cards in this chain
@@ -83,40 +93,34 @@ class Chain : public Chain_Base{
             
             if (typeid(T) == typeid(*card)) {
                 cards.push_back(card);
+                std::cout<< "Card added success." <<std::endl;
             } else {
-                std::cout<< "Illegal card type added to chain." <<std::endl;
+                std::cout<< "Illegal card type." <<std::endl;
             }
             return *this;
         }
 
-        int sell() const;
+        int sell() const{
+            if(cards.empty()){
+                return 0;
+            } else{
+                int size = cards.size();
+                if(cards[0]->getCardsPerCoin(4) <= size){
+                    return 4;
+                } else if(cards[0]->getCardsPerCoin(3) <= size){
+                    return 3;
+                }  else if(cards[0]->getCardsPerCoin(2) <= size){
+                    return 2;
+                } else if(cards[0]->getCardsPerCoin(1) <= size){
+                    return 1;
+                } else{
+                    return 0;
+                }
+            }
+        }
 
     
 };
-
-//sell member function(was just testing to see how I could declare it outside)
-template<typename T>
-int Chain<T>::sell() const{
-    if(cards.empty()){
-        return 0;
-    } else{
-        int size = cards.size();
-        if(cards[0]->getCardsPerCoin(4) <= size){
-            return 4;
-        } else if(cards[0]->getCardsPerCoin(3) <= size){
-            return 3;
-        }  else if(cards[0]->getCardsPerCoin(2) <= size){
-            return 2;
-        } else if(cards[0]->getCardsPerCoin(1) <= size){
-            return 1;
-        } else{
-            return 0;
-        }
-    }
-}
-
-
-
 
 
 #endif 

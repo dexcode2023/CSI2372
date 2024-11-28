@@ -14,7 +14,7 @@ class NotEnoughCoins : public std::exception {
 class Player{
     private:
         std::string name;
-        std::vector<Chain<Card>*> chains;
+        std::vector<Chain_Base*> chains;
 
         int maxchains;
         int coins;
@@ -34,11 +34,30 @@ class Player{
             }
 
             // Give coins to the player and replace the chain
+            os<<"Selling: "<<*chains[maxProfitIndex]<<std::endl;
             os << "Sold chain for " << maxCoins << " coins.\n";
-            *this += maxCoins; // Add coins to the player
-            delete chains[maxProfitIndex]; // Delete the old chain
-            chains[maxProfitIndex] = new Chain<Card>(); // Replace it with a new chain
-            *chains[maxProfitIndex] += newCard; // Add the new card to the chain
+            *this += maxCoins; 
+            delete chains[maxProfitIndex];
+            Chain_Base* newChain = nullptr;
+            if (newCard->getName() == "Blue") {
+                    newChain = new Chain<Blue>();
+                } else if (newCard->getName() == "Chili") {
+                    newChain = new Chain<Chili>();
+                } else if (newCard->getName() == "Stink") {
+                    newChain = new Chain<Stink>();
+                } else if (newCard->getName() == "Green") {
+                    newChain = new Chain<Green>();
+                } else if (newCard->getName() == "soy") {
+                    newChain = new Chain<soy>();
+                } else if (newCard->getName() == "black") {
+                    newChain = new Chain<black>();
+                } else if (newCard->getName() == "Red") {
+                    newChain = new Chain<Red>();
+                } else if (newCard->getName() == "garden") {
+                    newChain = new Chain<garden>();
+                }
+            chains[maxProfitIndex] = newChain; // Replace it with a new chain
+            *chains[maxProfitIndex] += newCard; 
         }
 
     public:
@@ -80,7 +99,7 @@ class Player{
                 return nonZero;
         }   
 
-        Chain<Card>& operator[](int i) {
+        Chain_Base& operator[](int i) {
 
             if (i < 0 || i >= chains.size()) {
                 throw std::out_of_range("Invalid chain index");
@@ -98,7 +117,7 @@ class Player{
             }
             coins -= 3;
             maxchains = 3;
-            chains.push_back(new Chain<Card>());
+            chains.push_back(new Chain<Card>);
         }
 
 
@@ -145,7 +164,10 @@ class Player{
             for (auto& chain : chains) {
 
                 if(cardToPlay->getName() == chain->getType()){
-
+                    *chain += cardToPlay; 
+                    os << "Added " << *cardToPlay << " to an existing chain.\n";
+                    os<< *chain <<"\n";
+                    return;
                 } else{
                     continue;
                 }
@@ -161,8 +183,30 @@ class Player{
 
             // If no matching chain exists and we can create a new chain
             if (chains.size() < maxchains) {
-                Chain<Card>* newChain = new Chain<Card>();
-                *newChain += cardToPlay; 
+                Chain_Base* newChain = nullptr;
+
+                if (cardToPlay->getName() == "Blue") {
+                    newChain = new Chain<Blue>();
+                } else if (cardToPlay->getName() == "Chili") {
+                    newChain = new Chain<Chili>();
+                } else if (cardToPlay->getName() == "Stink") {
+                    newChain = new Chain<Stink>();
+                } else if (cardToPlay->getName() == "Green") {
+                    newChain = new Chain<Green>();
+                } else if (cardToPlay->getName() == "soy") {
+                    newChain = new Chain<soy>();
+                } else if (cardToPlay->getName() == "black") {
+                    newChain = new Chain<black>();
+                } else if (cardToPlay->getName() == "Red") {
+                    newChain = new Chain<Red>();
+                } else if (cardToPlay->getName() == "garden") {
+                    newChain = new Chain<garden>();
+                } else {
+                    os << "Unknown card type. Cannot create chain.\n";
+                    return;
+                }
+
+                *newChain += cardToPlay;
                 chains.push_back(newChain);
                 os << "Started a new chain with " << *cardToPlay << ".\n";
                 return;

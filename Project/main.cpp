@@ -4,6 +4,8 @@
 #include "Table.h"
 
 int main() {
+
+
     // Initialize the game.
     CardFactory* factory = CardFactory::getFactory();
     Deck deck = factory->getDeck();
@@ -61,14 +63,25 @@ int main() {
 
                     // Try to add the card to a chain.
                     for (int i = 0; i < currentPlayer->getNumChains(); ++i) {
-                        try {
-                            currentPlayer->operator[](i) += tradeCard;
+
+                        if(tradeCard->getName() == currentPlayer->operator[](i).getType()){
+                            currentPlayer->operator[](i) += tradeCard; 
                             std::cout << currentPlayer->getName() << " chains " << *tradeCard << " to Chain " << i + 1 << "\n";
                             Chained = true;
-                            break; 
-                        } catch (IllegalType&) {
-                            continue; 
+                            break;
+                        } else{
+                            continue;
                         }
+
+
+                        // try {
+                        //     currentPlayer->operator[](i) += tradeCard;
+                        //     std::cout << currentPlayer->getName() << " chains " << *tradeCard << " to Chain " << i + 1 << "\n";
+                        //     Chained = true;
+                        //     break; 
+                        // } catch (IllegalType&) {
+                        //     continue; 
+                        // }
                     }
 
                     // If not chained, discard the card.
@@ -105,7 +118,7 @@ int main() {
 
                 char check;
                 currentPlayer->printHand(std::cout,true);
-                std::cout<<"would you like to play another card from hand? (y/n): ";
+                std::cout<<"\nwould you like to play another card from hand? (y/n): ";
                 std::cin>>check;
                 if(check == 'y' || check == 'Y'){
                     currentPlayer->playCard(std::cout);
