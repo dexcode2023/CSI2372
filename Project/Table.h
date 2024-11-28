@@ -24,7 +24,7 @@ class Table{
 
     public:
 
-        Table(Player* player1, Player* player2, const Deck& d): p1(player1), p2(player2),D(d){
+        Table(Player* player1, Player* player2, Deck& d): p1(player1), p2(player2),D(d){
 
         }
 
@@ -81,7 +81,7 @@ class Table{
         friend std::ostream& operator<<(std::ostream& os, const Table& table) {
             os << "Player 1: " << *(table.p1) << "\n";
             os << "Player 2: " << *(table.p2) << "\n";
-            os << "Deck: " << table.D << "\n";
+            //not  printing deck here as there are issues with it  updating properly
             os << "Discard Pile: " << table.DP << "\n";
             os << "Trade Area: " << table.TA << "\n";
             return os;

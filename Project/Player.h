@@ -171,14 +171,7 @@ class Player{
                 } else{
                     continue;
                 }
-                // try {
-                //     *chain += cardToPlay; 
-                //     os << "Added " << *cardToPlay << " to an existing chain.\n";
-                //     os<< chain <<"\n";
-                //     return;
-                // } catch (IllegalType&) {
-                //     continue; 
-                // }
+    
             }
 
             // If no matching chain exists and we can create a new chain

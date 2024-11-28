@@ -74,14 +74,7 @@ int main() {
                         }
 
 
-                        // try {
-                        //     currentPlayer->operator[](i) += tradeCard;
-                        //     std::cout << currentPlayer->getName() << " chains " << *tradeCard << " to Chain " << i + 1 << "\n";
-                        //     Chained = true;
-                        //     break; 
-                        // } catch (IllegalType&) {
-                        //     continue; 
-                        // }
+                  
                     }
 
                     // If not chained, discard the card.
@@ -117,7 +110,9 @@ int main() {
              while(runitback){
 
                 char check;
-                currentPlayer->printHand(std::cout,true);
+                std::cout << currentPlayer->getName() << "'s updated hand: ";
+                currentPlayer->printHand(std::cout, true);
+                std::cout << "\n";
                 std::cout<<"\nwould you like to play another card from hand? (y/n): ";
                 std::cin>>check;
                 if(check == 'y' || check == 'Y'){
