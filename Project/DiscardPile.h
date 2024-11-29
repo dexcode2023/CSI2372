@@ -4,6 +4,7 @@
 #include <vector>
 #include "Card.h"
 
+//DiscardPile class definition
 class DiscardPile{
 
     private:
@@ -11,12 +12,14 @@ class DiscardPile{
     public:
 
         
-
+        //operator to add to the discard pile
         DiscardPile& operator +=(Card* card){
             pile.push_back(card);
             return *this;
         }
 
+
+        //pickup top card from discard pile
         Card* pickUp(){
             if(pile.empty()){
                 return nullptr;
@@ -28,6 +31,7 @@ class DiscardPile{
             }
         }
 
+        //view to card of  discard pile
         Card* top() const{
             if(pile.empty()){
                 return nullptr;
@@ -36,6 +40,7 @@ class DiscardPile{
             }
 
         }
+        //print discard pile onto output stream
         void print(std::ostream& os) const {
             for (const auto& card : pile) {
                 card->print(os);
@@ -43,6 +48,7 @@ class DiscardPile{
             }
         }   
 
+        //<< operator for ouput  of discard pile
         friend std::ostream& operator<<(std::ostream& os, const DiscardPile& dp) {
             if(!dp.pile.empty()){
                 dp.pile.back()->print(os);
@@ -57,7 +63,7 @@ class DiscardPile{
             return os;
         
     }
-
+    //return empty status of discard pile
     bool empty() const{
         return pile.empty();
     }

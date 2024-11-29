@@ -21,6 +21,7 @@ class Player{
 
         Hand hand;
 
+        //Function to create a new chain object with the type of the card passed as argument
         Chain_Base* chainCreateType(Card* newCard){
             Chain_Base* newChain = nullptr;
             if (newCard->getName() == "Blue") {

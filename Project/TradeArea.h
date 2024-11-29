@@ -7,6 +7,7 @@
 #include "Card.h"
 #include "CardFactory.h"
 
+//TradeArea class definition
 class TradeArea{
 
     private:

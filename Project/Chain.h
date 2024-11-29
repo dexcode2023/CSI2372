@@ -13,7 +13,7 @@ class IllegalType : public std::exception {
          }
 };
 
-
+//Chainbase class to be extended by chain objects, better supporting the polymorphic nature of the chain
 class Chain_Base {
 protected:
     std::vector<Card*> cards;
@@ -21,23 +21,25 @@ protected:
 public:
     virtual ~Chain_Base() {}
 
+    //+= operator to add card to chainbase
     Chain_Base& operator+=(Card* card){
 
             
             cards.push_back(card);
             return *this;
         };
-
+    //returns type of chainbase
     std::string getType() const{
             return chainType;
         }
     
     virtual int sell() const = 0;
 
+    //returns size  of chainbase
     int size() const {
         return cards.size();
     }
-
+    //returns empty status of chainbase
     bool empty() const {
         return cards.empty();
     }
@@ -68,6 +70,8 @@ class Chain : public Chain_Base{
 
 
     public:
+
+        //constructor for chain types
         Chain() {
             if (typeid(T) == typeid(Blue)) {
                 chainType = "Blue";
@@ -89,6 +93,7 @@ class Chain : public Chain_Base{
         }
 
         //check if card to be added is same type as other cards in this chain
+        // not  called in main, check is done outside before cards are ever added to a chain.
         Chain& operator+=(Card* card){
             
             if (typeid(T) == typeid(*card)) {
@@ -100,6 +105,8 @@ class Chain : public Chain_Base{
             return *this;
         }
 
+
+        //selling chain for coins depending on size
         int sell() const{
             if(cards.empty()){
                 return 0;
