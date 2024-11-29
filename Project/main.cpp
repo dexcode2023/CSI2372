@@ -130,11 +130,14 @@ int main() {
             std::cout << "Would you like to discard a card from your hand? (y/n): ";
             char discardChoice;
             std::cin >> discardChoice;
+
+
             if (discardChoice == 'y' || discardChoice == 'Y') {
                     currentPlayer->printHand(std::cout, true); // Show the full hand
                     std::cout << "\nSelect the index of the card to discard: ";
                     int discardIndex;
                     std::cin >> discardIndex;
+                    
                     Card* discardedCard = currentPlayer->discardCard(discardIndex); // Implement discardCard in Player
                     DP += discardedCard;
                     std::cout << currentPlayer->getName() << " discards " << *discardedCard << "\n";
