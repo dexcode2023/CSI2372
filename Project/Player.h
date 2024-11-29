@@ -8,6 +8,7 @@
 #include "Chain.h"
 
 class NotEnoughCoins : public std::exception {
+// Exception thrown when a player tries to buy a third chain without enough coins.
     const char* what() const noexcept override { return "Not enough coins to buy a third chain."; }
 };
 
