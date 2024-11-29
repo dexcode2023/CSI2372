@@ -9,6 +9,7 @@
 class Card{
     public:
 
+// Virtual destructor
     virtual ~Card(){};
 
     virtual int getCardsPerCoin(int coins) const = 0;
@@ -17,6 +18,7 @@ class Card{
 
     virtual void print(std::ostream&  out) const = 0;
 
+// Overloaded << operator to print a card using the print method.
     friend std::ostream& operator<<(std::ostream& os, const Card&  card){
         card.print(os);
         return os;
@@ -28,6 +30,8 @@ class Card{
 
 class Blue : public Card {
 public:
+
+// Returns cards needed for a given number of coins for Blue beans
     int getCardsPerCoin(int coins) const override {
         switch (coins) {
             case 1: return 4;
