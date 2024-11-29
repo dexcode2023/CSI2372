@@ -116,7 +116,7 @@ int main() {
                 char check;
                 std::cout << currentPlayer->getName() << "'s updated hand: ";
                 currentPlayer->printHand(std::cout, true);
-                std::cout << "𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽\n";
+                std::cout << "\n𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽";
                 std::cout<<"\nWould you like to play another card from hand? (y/n): ";
                 std::cin>>check;
                 if(check == 'y' || check == 'Y'){
