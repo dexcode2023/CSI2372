@@ -5,16 +5,20 @@
 #include <iostream>
 #include "Card.h"
 
+// The Hand class manages a player's hand of cards.
+
 class Hand{
     private:
-        std::list<Card*> hand;
+        std::list<Card*> hand; // List to store pointers to cards.
     public:
-
+    // Add a card to the front of the hand.
         Hand& operator+=(Card* card){
             hand.push_front(card);
             return *this;
         }
 
+    // Remove and return the card at index `i`.
+    // Returns nullptr if index is out of range.
         Card* operator[](int i){
             if(i < 0 || i >= hand.size()){
                 return nullptr;
