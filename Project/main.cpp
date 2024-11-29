@@ -11,17 +11,20 @@ int main() {
     Deck deck = factory->getDeck();
 
     // Get player names.
-    std::cout << "Enter name for Player 1: ";
+    std::cout << "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★\n";
+    std::cout << "Please enter name for Player 1: ";
     std::string name1;
     std::cin >> name1;
 
-    std::cout << "Enter name for Player 2: ";
+    std::cout << "Please enter name for Player 2: ";
     std::string name2;
     std::cin >> name2;
 
     Player* player1 = new Player(name1);
     Player* player2 = new Player(name2);
-
+    std::cout << "Players created: " << name1 << " and " << name2 << "\n";
+    std::cout << "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★\n";
+    
     // Deal 5 cards to each player.
     for (int i = 0; i < 5; ++i) {
         player1->addCardToHand(deck.draw());
@@ -89,6 +92,7 @@ int main() {
             //option to buy a third chain.
             if (currentPlayer->getNumChains() < 3 && currentPlayer->getNumCoins() >= 3) {
                 char choice;
+                std::cout << "𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉\n";                
                 std::cout << "Do you want to buy a third chain for 3 coins? (y/n): ";
                 std::cin >> choice;
                 if (choice == 'y' || choice == 'Y') {
@@ -112,8 +116,8 @@ int main() {
                 char check;
                 std::cout << currentPlayer->getName() << "'s updated hand: ";
                 currentPlayer->printHand(std::cout, true);
-                std::cout << "\n";
-                std::cout<<"\nwould you like to play another card from hand? (y/n): ";
+                std::cout << "𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽𓇽\n";
+                std::cout<<"\nWould you like to play another card from hand? (y/n): ";
                 std::cin>>check;
                 if(check == 'y' || check == 'Y'){
                     currentPlayer->playCard(std::cout);
@@ -127,6 +131,7 @@ int main() {
 
             //STEP4
             //Optionally discard one card from hand on DP face up.
+            std::cout << "✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶✶\n";            
             std::cout << "Would you like to discard a card from your hand? (y/n): ";
             char discardChoice;
             std::cin >> discardChoice;
@@ -164,6 +169,7 @@ int main() {
             std::cout<<std::endl;
 
             for (Card* tradeCard : TA.getCards()) {
+                std::cout << "𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉𓆉\n"; 
                 std::cout << "Would you like to chain " << *tradeCard << "? (y/n): ";
                 char chainChoice;
                 std::cin >> chainChoice;
@@ -189,7 +195,7 @@ int main() {
 
             // End of turn, check for winner
             if (table.win(winnerName)) {
-                std::cout << "Game Over! Winner: " << winnerName << "\n";
+                std::cout << "𓇼 Game Over! Winner 𓇼: " << winnerName << "\n";
                 break;
             }
 
