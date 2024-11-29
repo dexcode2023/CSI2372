@@ -8,13 +8,15 @@
 #include "Card.h"
 #include "Deck.h"
 
+// CardFactory makes and manages a deck of cards.
+// Only one CardFactory can exist.
 
 class CardFactory{
 
 
     private:
 
-        static CardFactory* instance;
+        static CardFactory* instance; // Pointer to the single CardFactory instance
         Deck deck;
 
         CardFactory() {
@@ -35,7 +37,7 @@ class CardFactory{
 
         static CardFactory* getFactory() {
             if (!instance) {
-                instance = new CardFactory();
+                instance = new CardFactory(); // Create instance if it doesn’t exist.
             }
             return instance;
         }
@@ -44,13 +46,15 @@ class CardFactory{
             return deck;
         }
 
-
+    // Disable copying and assigning the CardFactory.
 
         CardFactory(const CardFactory&) = delete;
         
         CardFactory& operator=(const CardFactory&) = delete;
 
 };
+
+// Set the instance pointer to null at the start.
 CardFactory* CardFactory::instance = nullptr;
 
 #endif
