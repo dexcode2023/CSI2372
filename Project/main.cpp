@@ -11,7 +11,7 @@ int main() {
     Deck deck = factory->getDeck();
 
     // Get player names.
-    std::cout << "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★\n";
+    
     std::cout << "Please enter name for Player 1: ";
     std::string name1;
     std::cin >> name1;
@@ -23,7 +23,7 @@ int main() {
     Player* player1 = new Player(name1);
     Player* player2 = new Player(name2);
     std::cout << "Players created: " << name1 << " and " << name2 << "\n";
-    std::cout << "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★\n";
+    
     
     // Deal 5 cards to each player.
     for (int i = 0; i < 5; ++i) {
